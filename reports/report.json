@@ -1,0 +1,136 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "features",
+    "line": 2,
+    "id": "features",
+    "tags": [],
+    "uri": "features\\features.feature",
+    "elements": [
+      {
+        "id": "features;search-result---sort-by",
+        "keyword": "Scenario",
+        "line": 93,
+        "name": "Search result - sort by",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 94,
+            "name": "I open 'https://www.indiegogo.com/'",
+            "match": {
+              "location": "steps\\mainPageSteps.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4764000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 95,
+            "name": "I click on \"search icon\"",
+            "match": {
+              "location": "steps\\mainPageSteps.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 185000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 96,
+            "name": "search panel is shown",
+            "match": {
+              "location": "steps\\mainPageSteps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 97,
+            "name": "I type 'test5' in a search bar",
+            "match": {
+              "location": "steps\\mainPageSteps.js:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 98000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 98,
+            "name": "I press 'Enter'",
+            "match": {
+              "location": "steps\\keyboardInteractions.js:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1352000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 99,
+            "name": "result page is shown",
+            "match": {
+              "location": "steps\\resultPageSteps.js:13"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5005000000,
+              "error_message": "Error: function timed out, ensure the promise resolves within 5000 milliseconds\n    at Timeout._time.default.setTimeout [as _onTimeout] (C:\\test\\node_modules\\cucumber\\lib\\user_code_runner.js:81:20)\n    at ontimeout (timers.js:436:11)\n    at tryOnTimeout (timers.js:300:5)\n    at listOnTimeout (timers.js:263:5)\n    at Timer.processTimers (timers.js:223:10)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 100,
+            "name": "I change project timing to \"Just launched\"",
+            "match": {
+              "location": "steps\\resultPageSteps.js:46"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 101,
+            "name": "result is displayed according to project timing",
+            "match": {
+              "location": "steps\\resultPageSteps.js:50"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
