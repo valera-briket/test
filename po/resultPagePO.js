@@ -7,14 +7,13 @@ let expect = chai.expect;
 
 
 let byId = {
-
 };
 
 let byClassName = {
   'filters': 'exploreFilters',
   'search results panel': 'exploreDetail-campaigns row',
   dropDown: 'exploreDropdown-select ng-scope',
-  filterTag: 'exploreQueryConfig-selectedFilters'
+
 };
 
 let byXpath = {
@@ -25,10 +24,10 @@ let byXpath = {
   dropDownOpen: '//div[@class="dropdown exploreDropdown open"]/ul/descendant::a',
   projectTiming: '//div[@class="exploreFilter"]//input',
   projectTimingTexts: '//div[@class="exploreFilter"]//div[@class="styledRadio-label ng-binding"]',
+  filterTag: '//section[@class="exploreFilters"]/div[2]/div'
 };
 
-let byCss = {
-}
+
 
 function getElement(elem) {
   if (byId[elem]) {
@@ -36,9 +35,6 @@ function getElement(elem) {
   }
   else if (byClassName[elem]) {
     return element(by.className(byClassName[elem]))
-  }
-  else if (byCss[elem]) {
-    return element(by.css(byCss[elem]))
   }
   else if (byXpath[elem]) {
     return element(by.xpath(byXpath[elem]))
@@ -78,32 +74,32 @@ module.exports = {
     return getElement(locator).sendKeys(string)
   },
   countResults: () => {
-    return getElements('results').count()
+    return getElements('results').count();
   },
   getSortingOptions: async (string) => {
     let elements = await getElements('dropDownOpen');
     //Here we are searching for element recieved from keyword by matching sorting option texts and keyword. When it found, we click on it
-      for (item of elements) {
-        let name = await item.getText();
-        if (name == string) await item.click();
-      }
-   },
- 
- 
-   getTimingOptions: async (string) => {
-     let elements = await getElements('projectTiming'); //getting all radio buttons selectors
-     let texts = await getElements('projectTimingTexts'); //getting all radio button texts
-     let counter = 0;
-     //Here we are searching for element recieved from keyword by matching radio
-     //button texts and keyword. If it matches, we click on radio button with appropriate number(using elemens array)
-     for (item of texts) {
+    for (item of elements) {
       let name = await item.getText();
-      if(name == string) {
+      if (name == string) await item.click();
+    }
+  },
+
+
+  getTimingOptions: async (string) => {
+    let elements = await getElements('projectTiming'); //getting all radio buttons selectors
+    let texts = await getElements('projectTimingTexts'); //getting all radio button texts
+    let counter = 0;
+    //Here we are searching for element recieved from keyword by matching radio
+    //button texts and keyword. If it matches, we click on radio button with appropriate number(using elemens array)
+    for (item of texts) {
+      let name = await item.getText();
+      if (name == string) {
         await elements[counter].click();
         break;
       }
       else counter++;
     }
-    }
+  }
 }
 

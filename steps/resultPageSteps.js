@@ -5,7 +5,8 @@ let chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 let expect = chai.expect;
 
-
+const { setDefaultTimeout } = require('cucumber');
+setDefaultTimeout(60 * 1000);
 
 
 
@@ -45,9 +46,8 @@ Then('result is displayed according to sorting', function () {
 
 When('I change project timing to {string}', async function (string) {
     await resultPage.getTimingOptions(string); //function that selects radio button based on string 
-  });
+});
 
-  Then('result is displayed according to project timing', async function () {
+Then('result is displayed according to project timing', async function () {
     await expect(resultPage.isShown('filterTag')).to.eventually.equal(true);
-    await browser.pause(4444)
-  });
+});

@@ -1,4 +1,3 @@
-
 exports.config = {
   allScriptsTimeout: 200000,
     getPageTimeout: 200000,

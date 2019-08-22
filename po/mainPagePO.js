@@ -7,7 +7,6 @@ let expect = chai.expect;
 
 
 let byId = {
-  
 };
 
 let byClassName = {
@@ -24,8 +23,6 @@ let byXpath = {
   'search panel': '//section[@class="exploreResults"]/div[1]/form/input',
 };
 
-let byCss = {
- }
 
 function getElement(elem) {
   if (byId[elem]) {
@@ -33,9 +30,6 @@ function getElement(elem) {
   }
   else if (byClassName[elem]) {
     return element(by.className(byClassName[elem]))
-  }
-  else if (byCss[elem]) {
-    return element(by.css(byCss[elem]))
   }
   else if (byXpath[elem]) {
     return element(by.xpath(byXpath[elem]))
@@ -61,53 +55,53 @@ module.exports = {
   },
   checkSearchString: (locator, string) => {
     // here we are getting text, entered in the field
-    return getElement(locator).getAttribute('value') 
+    return getElement(locator).getAttribute('value')
   },
   getPlaceholder: (locator) => {
     // here we are getting placeholders from the fields 
     return getElement(locator).getAttribute('placeholder')
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /*switchToFrame: async (string) => {
     await browser.switchTo().defaultContent();
     await browser.switchTo().frame(getElement(string).getWebElement());
@@ -165,5 +159,5 @@ module.exports = {
       expect(classes).to.match(/ui-state-highlight/);
     });
   },*/
-   
+
 } 
