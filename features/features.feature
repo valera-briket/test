@@ -78,7 +78,7 @@ Feature: features
         And there are '12' results on page
         Then I click 'show more' button
         And there are '24' results on page
-
+# here is error idk why :(
     Scenario: Search result - sort by
         Given I open 'https://www.indiegogo.com/'
         And I click on "search icon"

@@ -48,9 +48,6 @@ function getElements(elem) {
   else if (byClassName[elem]) {
     return element.all(by.className(byClassName[elem]))
   }
-  else if (byCss[elem]) {
-    return element.all(by.css(byCss[elem]))
-  }
   else if (byXpath[elem]) {
     return element.all(by.xpath(byXpath[elem]))
   }
