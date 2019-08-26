@@ -2,7 +2,7 @@ exports.config = {
   allScriptsTimeout: 200000,
     getPageTimeout: 200000,
 
-    seleniumAddress: 'http://localhost:4444/wd/hub', // This is targetting local running instance of the selenium webdriver
+    // seleniumAddress: 'http://localhost:4444/wd/hub', // This is targetting local running instance of the selenium webdriver
   
     specs: [
       './features/features.feature',  // here's were keywoards are located
