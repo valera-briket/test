@@ -1,9 +1,5 @@
 let mainPage = require('../po/mainPagePO.js');
 
-let chai = require('chai');
-let chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-let expect = chai.expect;
 
 const { setDefaultTimeout } = require('cucumber');      //setting default cucmber timeout since edfault is 5 sec(it's not enough)
 setDefaultTimeout(60 * 1000);
