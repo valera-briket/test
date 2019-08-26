@@ -3,7 +3,7 @@ How to run tests:
 clone https://github.com/valera-briket/test.git
 2. To install dependencies  
 npm install 
-3. To run tests use
+3. To run tests use:
 npm run test
 4. to generate report use:
 npm run test:generate-report
