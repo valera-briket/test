@@ -5,19 +5,19 @@ let chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 let expect = chai.expect;
 
-const { setDefaultTimeout } = require('cucumber');
+const { setDefaultTimeout } = require('cucumber');            //setting default cucmber timeout since edfault is 5 sec(it's not enough)
 setDefaultTimeout(60 * 1000);
 
 
 
-
+// The result page can be empty so I check result panel by filters and result search panel
 Then('result page is shown', async function () {
     await expect(resultPage.isShown('filters')).to.eventually.equal(true);
     await expect(resultPage.isShown('search panel')).to.eventually.equal(true);
 });
 
 Then('{string} is displayed in a result panel search bar', async function (string) {
-    await expect(mainPage.checkSearchString("search panel")).to.eventually.equal(string);
+    await expect(mainPage.checkSearchString("result search panel")).to.eventually.equal(string);
 });
 
 Then('no results found is shown', async function () {
@@ -25,6 +25,7 @@ Then('no results found is shown', async function () {
 });
 
 Then('there are {string} results on page', async function (string) {
+    await browser.sleep(5000) //sometimes result page lags so I added delay in order to avoid it 
     let result = await resultPage.countResults(); //creating variable to resolve promise
     await expect(result).to.equal(+string);
 });

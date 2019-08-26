@@ -2,16 +2,16 @@ exports.config = {
   allScriptsTimeout: 200000,
     getPageTimeout: 200000,
 
-    seleniumAddress: 'http://localhost:4444/wd/hub', // This is targetting your local running instance of the selenium webdriver
+    seleniumAddress: 'http://localhost:4444/wd/hub', // This is targetting local running instance of the selenium webdriver
   
     specs: [
-      './features/features.feature',
+      './features/features.feature',  // here's were keywoards are located
     ],
 
-    SELENIUM_PROMISE_MANAGER: false,
+    SELENIUM_PROMISE_MANAGER: false,   //turning off promise manager to be able to use async/await
   
     capabilities: {
-      browserName: 'chrome', // You can use any browser you want. On a CI environment you're going to want to use PhantomJS
+      browserName: 'chrome', // using chrome
       'goog:chromeOptions': {
         w3c: false
       }
@@ -19,12 +19,11 @@ exports.config = {
   
     framework: 'custom', //We need this line to use the cucumber framework
   
-    frameworkPath: require.resolve('protractor-cucumber-framework'), // Here it is
-  
+    frameworkPath: require.resolve('protractor-cucumber-framework'),   
     cucumberOpts: {
       require: [
       './steps/*.js',
-    ], // This is where we'll be writing our actual tests
+    ], // This is where actual steps are located
                
     strict: true,                  // <boolean> fail if there are any undefined or pending steps
     'dry-run': false,              // <boolean> invoke formatters without executing steps
@@ -37,7 +36,7 @@ exports.config = {
  
   
   
-  onPrepare: function () {
+  onPrepare: function () {                                           // This will be executed before tests run started
     browser.driver.manage().window().maximize();
     const {Given, Then, When, Before} = require('cucumber');
     global.Given = Given;
@@ -45,6 +44,5 @@ exports.config = {
     global.Then = Then;
     global.Before = Before;
     browser.ignoreSynchronization = true;
-
-  },
+    },
 };

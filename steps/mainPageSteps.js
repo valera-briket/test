@@ -5,7 +5,7 @@ let chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 let expect = chai.expect;
 
-const { setDefaultTimeout } = require('cucumber');
+const { setDefaultTimeout } = require('cucumber');      //setting default cucmber timeout since edfault is 5 sec(it's not enough)
 setDefaultTimeout(60 * 1000);
 
 
@@ -15,32 +15,18 @@ Given('I open {string}', async function (string) {
 
 });
 
-Given('main page is shown', async function () {
-    await expect(browser.getTitle()).to.eventually.equal('Crowdfund Innovations & Support Entrepreneurs | Indiegogo')
-    await expect(mainPage.isShown('mainPage')).to.eventually.equal(true);
-});
-
 When('I click on {string}', async function (string) {
     await mainPage.getElement(string).click();
     // await browser.pause(4444);
 });
 
-Then('search panel is shown', async function () {
-    await expect(mainPage.isShown('search bar')).to.eventually.equal(true);
+Then('{string} is shown', async function (string) {
+    await expect(mainPage.isShown(string)).to.eventually.equal(true);
 });
 
-Then('search panel is not shown', async function () {
+Then('{string} is not shown', async function (string) {
 
-    await expect(mainPage.isPresent('search bar')).to.eventually.equal(false);
-
-});
-
-Then('header is not shown', async function () {
-    await expect(mainPage.isPresent('header')).to.eventually.equal(false);
-});
-
-Then('header is shown', async function () {
-    await expect(mainPage.isShown('header')).to.eventually.equal(true);
+    await expect(mainPage.isPresent(string)).to.eventually.equal(false);
 
 });
 

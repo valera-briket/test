@@ -1,11 +1,8 @@
 
-let chai = require('chai');
-let chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-let expect = chai.expect;
 
 
 
+// I put all selectors in the objects and then use one function to work with them
 let byId = {
 };
 
@@ -13,8 +10,7 @@ let byClassName = {
   'filters': 'exploreFilters',
   'search results panel': 'exploreDetail-campaigns row',
   dropDown: 'exploreDropdown-select ng-scope',
-
-};
+  };
 
 let byXpath = {
   'search panel': '//section[@class="exploreResults"]/div[1]/form/input',
@@ -28,7 +24,7 @@ let byXpath = {
 };
 
 
-
+// this function works with selectors and return selected elements. just like element(by.something(''))
 function getElement(elem) {
   if (byId[elem]) {
     return element(by.id(byId[elem]))
@@ -40,7 +36,7 @@ function getElement(elem) {
     return element(by.xpath(byXpath[elem]))
   }
 }
-
+// this function returns group of elements, used when we need elemen.all
 function getElements(elem) {
   if (byId[elem]) {
     return element.all(by.id(byId[elem]))
@@ -62,9 +58,10 @@ module.exports = {
     return getElement(string).click();
   },
   isShown: (string) => {
-    return getElement(string).isDisplayed();
+    return getElement(string).isDisplayed();  
   },
   isPresent: (string) => {
+    // I had a problem checking that header is not shown(because element locator deleted when we hide header), so I just check that it's deleted from DOM model
     return getElement(string).isPresent();
   },
   typeString: (locator, string) => {
