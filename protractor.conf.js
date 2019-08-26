@@ -38,6 +38,9 @@ exports.config = {
   
   onPrepare: function () {                                           // This will be executed before tests run started
     browser.driver.manage().window().maximize();
+    const chai = require('chai');
+    chai.use(require('chai-as-promised'));
+    global.expect = chai.expect;
     const {Given, Then, When, Before} = require('cucumber');
     global.Given = Given;
     global.When = When;
